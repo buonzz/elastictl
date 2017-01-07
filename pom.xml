@@ -12,21 +12,18 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>transport</artifactId>
-            <version>5.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.7</version>
+            <groupId>io.searchbox</groupId>
+            <artifactId>jest</artifactId>
+            <version>2.0.0</version>
         </dependency>
     </dependencies>
+    <repositories>
+     <repository>
+       <id>sonatype</id>
+       <name>Sonatype Groups</name>
+       <url>https://oss.sonatype.org/content/groups/public/</url>
+     </repository>
+    </repositories>
     <build>
   <plugins>
     <plugin>
