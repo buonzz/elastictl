@@ -13,6 +13,7 @@ public class Application {
 
 	public static void main(String[] args) throws IOException {
 
+            Config app_config = new Config();
             FrameBuilder frameBuilder = new FrameBuilder();
 	    JFrame f = frameBuilder.build();
 	   
@@ -28,7 +29,9 @@ public class Application {
             String json;
 
             config = new HttpClientConfig.
-               Builder("localhost:9200").
+               Builder(app_config.properties.getProperty("es.protocol") + "://" + 
+                       app_config.properties.getProperty("es.host") + ":" 
+                       + app_config.properties.getProperty("es.port")).
                build();
 
             aliases = new GetAliases.
