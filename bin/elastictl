@@ -41,9 +41,12 @@ try{
 {
 	putenv('HOST=127.0.0.1');
 	putenv('PROTOCOL=http');
+  putenv('PORT=9200');
+  putenv('LOGGING=false');  
 	putenv('USERNAME=null');
 	putenv('PASSWORD=null');
   putenv('TIMEOUT=3');
+  putenv('LOGFILE=/var/log/elastictl');
 }
 
 $defaultCommand = new ClusterInfoCommand();
