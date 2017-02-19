@@ -8,6 +8,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Symfony\Component\Console\Helper\Table;
+
 use \Buonzz\Elastictl\ElasticSearch\IndexRepository;
 
 class ListIndicesCommand extends Command
@@ -23,6 +25,12 @@ class ListIndicesCommand extends Command
     {
         $repo = new IndexRepository();
         $indices = $repo->all(); 
-        var_dump($indices);
+
+        $table = new Table($output);
+        $table
+            ->setHeaders(array('Name', 'Documents', 'Size', 'Status', 'Health'))
+            ->setRows($indices->toArray())
+        ;
+        $table->render();
     }
 }

@@ -22,6 +22,18 @@ class IndexRepository{
 			$data = json_decode($stringBody);
 			$output = array_keys(get_object_vars($data));
 		}
-		return new Collection($output);
+
+		$col = new Collection($output);
+		
+		$processed = $col->map(function($item){
+			return [
+					"name" => $item ,
+			 		"documents" => 0,
+			 		"size" => 0,
+			 		"status" => "open",
+			 		"health" => "green"
+			 	];
+		});
+		return $processed;
 	}
 }
