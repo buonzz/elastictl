@@ -8,11 +8,11 @@ class ClientFactory{
 
 	 public static function getClient(){
 
-        $hosts = [getenv('HOST')];       
-        $logging = getenv('LOGGING');
-        if($logging && is_writable(getenv('LOGFILE')))
+        $hosts = [getenv('ES_HOST')];       
+        $logging = getenv('ES_LOGGING');
+        if($logging && is_writable(getenv('ES_LOGFILE')))
 		{ 
-       		$logger = ClientBuilder::defaultLogger( getenv('LOGFILE'), Logger::INFO);
+       		$logger = ClientBuilder::defaultLogger( getenv('ES_LOGFILE'), Logger::INFO);
         	$client = ClientBuilder::create()   // Instantiate a new ClientBuilder
                 	->setHosts($hosts)      // Set the hosts
                 	->setLogger($logger)

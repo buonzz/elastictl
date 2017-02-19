@@ -4,19 +4,17 @@
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-use Buonzz\Elastictl\Commands\HelloCommand;
+use Buonzz\Elastictl\Commands\ClusterInfoCommand;
 
 class HelloCommandTest extends \PHPUnit_Framework_TestCase
 {
     public function testExecute()
     {
         $application = new Application();
-        $application->add(new HelloCommand());
+        $application->add(new ClusterInfoCommand());
 
-        $command = $application->find('hello');
+        $command = $application->find('cluster:info');
         $commandTester = new CommandTester($command);
         $commandTester->execute(array('command' => $command->getName()));
-
-        $this->assertEquals($commandTester->getDisplay(), "Hello\n");
     }
 }

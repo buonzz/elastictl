@@ -39,9 +39,9 @@ try{
 	$dotenv->load();
 }catch(\Dotenv\Exception\InvalidPathException $e)
 {
-	putenv('HOST=127.0.0.1');
-	putenv('PROTOCOL=http');
-  putenv('PORT=9200');
+	putenv('ES_HOST=127.0.0.1');
+	putenv('ES_PROTOCOL=http');
+  putenv('ES_PORT=9200');
   putenv('LOGGING=false');  
 	putenv('USERNAME=null');
 	putenv('PASSWORD=null');
