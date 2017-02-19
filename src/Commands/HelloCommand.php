@@ -15,7 +15,7 @@ class HelloCommand extends Command
     {
         $this
             ->setName('hello')
-            ->setDescription('Sample hello command');
+            ->setDescription('Get cluster info');
     }
     
     protected function execute(InputInterface $input, OutputInterface $output)
