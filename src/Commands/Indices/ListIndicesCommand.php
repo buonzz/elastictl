@@ -18,13 +18,20 @@ class ListIndicesCommand extends Command
     {
         $this
             ->setName('indices:list')
-            ->setDescription('List Indices');
+            ->setDescription('List Indices')
+            ->addOption(
+                'sort_by',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Sort the indices by what field?',
+                "name"
+            );
     }
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $repo = new IndexRepository();
-        $indices = $repo->all(['sort_by' => 'name']); 
+        $indices = $repo->all(['sort_by' => $input->getOption('sort_by')]); 
 
         $table = new Table($output);
         $table
