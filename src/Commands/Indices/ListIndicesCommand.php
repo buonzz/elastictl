@@ -24,7 +24,7 @@ class ListIndicesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $repo = new IndexRepository();
-        $indices = $repo->all(); 
+        $indices = $repo->all(['sort_by' => 'name']); 
 
         $table = new Table($output);
         $table
