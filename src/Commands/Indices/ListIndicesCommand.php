@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Buonzz\Elastictl\ClientFactory;
+use \Buonzz\Elastictl\ElasticSearch\IndexRepository;
 
 class ListIndicesCommand extends Command
 {
@@ -21,10 +21,8 @@ class ListIndicesCommand extends Command
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $client = ClientFactory::getClient(); 
-        $response = $client->indices()->status();
-
-        var_dump($response);
-
+        $repo = new IndexRepository();
+        $indices = $repo->all(); 
+        var_dump($indices);
     }
 }

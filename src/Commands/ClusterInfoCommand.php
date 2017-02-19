@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Buonzz\Elastictl\ClientFactory;
+use Buonzz\Elastictl\ElasticSearch\ClientFactory;
 
 class ClusterInfoCommand extends Command
 {

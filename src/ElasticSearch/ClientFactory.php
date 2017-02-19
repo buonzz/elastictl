@@ -1,5 +1,5 @@
 <?php
-namespace Buonzz\Elastictl;
+namespace Buonzz\Elastictl\ElasticSearch;
 use Monolog\Logger;
 use Log;
 use Elasticsearch\ClientBuilder;
