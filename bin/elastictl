@@ -25,6 +25,8 @@ if(!defined('COMPOSER_INSTALLED'))
 
 
 use Buonzz\Elastictl\Commands\ClusterInfoCommand;
+use Buonzz\Elastictl\Commands\Indices\ListIndicesCommand;
+
 use Symfony\Component\Console\Application;
 use Dotenv\Dotenv;
 
@@ -52,6 +54,9 @@ try{
 $defaultCommand = new ClusterInfoCommand();
 
 $application = new Application("ElasticSearch Command Line Client by Darwin Biler", "v0.0.1");
+
 $application->add($defaultCommand);
+$application->add(new ListIndicesCommand());
+
 $application->setDefaultCommand($defaultCommand->getName());
 $application->run();

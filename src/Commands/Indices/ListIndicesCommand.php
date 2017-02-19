@@ -1,6 +1,6 @@
 <?php
 
-namespace Buonzz\Elastictl\Commands;
+namespace Buonzz\Elastictl\Commands\Indices;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -22,7 +22,9 @@ class ListIndicesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $client = ClientFactory::getClient(); 
-        $response = $client->cluster()->stats();
-        $output->writeln("<comment>Host:</comment> " . getenv("ES_HOST"));
+        $response = $client->indices()->status();
+
+        var_dump($response);
+
     }
 }
