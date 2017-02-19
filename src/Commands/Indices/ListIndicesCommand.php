@@ -28,7 +28,7 @@ class ListIndicesCommand extends Command
 
         $table = new Table($output);
         $table
-            ->setHeaders(array('Name', 'Documents', 'Size', 'Status', 'Health'))
+            ->setHeaders(array('Name', 'Documents', 'Size', 'Health'))
             ->setRows($indices->toArray())
         ;
         $table->render();

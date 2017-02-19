@@ -3,6 +3,7 @@ namespace Buonzz\Elastictl\ElasticSearch;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Collection;
+use Buonzz\Elastictl\ElasticSearch\IndexDecorator;
 
 class IndexRepository{
 
@@ -18,13 +19,8 @@ class IndexRepository{
 		$col = $this->listing->get();
 
 		$processed = $col->map(function($item){
-			return [
-					"name" => $item ,
-			 		"documents" => 0,
-			 		"size" => 0,
-			 		"status" => "open",
-			 		"health" => "green"
-			 	];
+			$obj = new IndexDecorator($item);
+			return $obj->get();
 		});
 		
 		return $processed;
