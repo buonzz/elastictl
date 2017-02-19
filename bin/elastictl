@@ -24,7 +24,7 @@ if(!defined('COMPOSER_INSTALLED'))
 	die('Install Composer dependencies first, autoloader not found.');
 
 
-use Buonzz\Elastictl\Commands\HelloCommand;
+use Buonzz\Elastictl\Commands\ClusterInfoCommand;
 use Symfony\Component\Console\Application;
 use Dotenv\Dotenv;
 
@@ -44,7 +44,9 @@ try{
   putenv('TIMEOUT=3');
 }
 
+$defaultCommand = new ClusterInfoCommand();
 
 $application = new Application("ElasticSearch Command Line Client by Darwin Biler", "v0.0.1");
-$application->add(new HelloCommand);
+$application->add($defaultCommand);
+$application->setDefaultCommand($defaultCommand->getName());
 $application->run();

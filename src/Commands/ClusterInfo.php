@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Buonzz\Elastictl\ClientFactory;
 
-class HelloCommand extends Command
+class ClusterInfoCommand extends Command
 {
     protected function configure()
     {
