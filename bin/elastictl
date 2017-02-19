@@ -1,0 +1,50 @@
+#!/usr/bin/env php
+<?php
+
+
+$files = array(
+  __DIR__ . '/../../vendor/autoload.php',
+  __DIR__ . '/../../../../autoload.php',
+  __DIR__ . '/../../../autoload.php',
+  '../vendor/autoload.php',
+  'vendor/autoload.php',  
+);
+
+
+foreach ($files as $file) {
+    if (file_exists($file)) {
+        require $file;
+        define('COMPOSER_INSTALLED', 1);
+        break;
+    }
+}
+
+// check if autoloader is present
+if(!defined('COMPOSER_INSTALLED'))
+	die('Install Composer dependencies first, autoloader not found.');
+
+
+use Buonzz\Elastictl\Commands\HelloCommand;
+use Symfony\Component\Console\Application;
+use Dotenv\Dotenv;
+
+
+
+// load configurations
+
+try{
+	$dotenv = new Dotenv(getcwd());
+	$dotenv->load();
+}catch(\Dotenv\Exception\InvalidPathException $e)
+{
+	putenv('HOST=127.0.0.1');
+	putenv('PROTOCOL=http');
+	putenv('USERNAME=null');
+	putenv('PASSWORD=null');
+  putenv('TIMEOUT=3');
+}
+
+
+$application = new Application("ElasticSearch Command Line Client by Darwin Biler", "v0.0.1");
+$application->add(new HelloCommand);
+$application->run();

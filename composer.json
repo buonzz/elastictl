@@ -1,0 +1,28 @@
+{
+    "name": "buonzz/elastictl",
+    "description": "Command Line Client for ElasticSearch.",
+    "keywords": ["cli", "elasticsearch", "console application", "indexing", "manager"],
+    "license": "DBAD",
+    "authors": [
+        {
+            "name": "Darwin Biler",
+            "email": "buonzz@gmail.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=5.4",
+        "vlucas/phpdotenv": "^2.0",
+        "symfony/console": "^2.2",
+        "illuminate/database": "^5.0"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "^4.0"
+    },
+    "bin": ["bin/elastictl"],
+	"autoload": {
+        "psr-4": {
+            "Buonzz\\Elastictl\\": "src/"
+        }
+    }
+}

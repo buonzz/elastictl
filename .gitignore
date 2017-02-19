@@ -1,4 +1,5 @@
-target
-*.class
+vendor/
+composer.lock
 .DS_Store
-
+.env
+dist/*.phar
