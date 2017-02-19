@@ -8,7 +8,7 @@ class ClientFactory{
 
 	 public static function getClient(){
 
-        $hosts = getenv('HOST');       
+        $hosts = [getenv('HOST')];       
         $logging = getenv('LOGGING');
         if($logging)
 		{ 
