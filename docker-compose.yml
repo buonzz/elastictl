@@ -1,13 +1,13 @@
 version: '2'
 sevices:
-  cli:
-    build: .
+  localcli:
+    build: ./
     image: "buonzz/php-production-cli"
     volumes:
       - .:/code
     links:
-      - memcached:memcached
-  memcached:
+      - localcache:localcache
+  localcache:
     image: memcached
     ports:
       - "11211:11211"
