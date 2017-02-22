@@ -13,6 +13,9 @@ Features
 
 ## Usage
 
+
+## Build Environment
+
 Put up the server dependencies
 ```
 docker-compose up -d
@@ -24,9 +27,6 @@ docker-compose exec cli bash
 ```
 
 
-## Build Environment
-
-
 In order to build the phar file, you need to install the box command. To do so:
 ```
 curl -LSs https://box-project.github.io/box2/installer.php | php
@@ -35,7 +35,7 @@ curl -LSs https://box-project.github.io/box2/installer.php | php
 Make sure you turn off readonly setting of phar file in your php.ini. In PHP7:
 
 ```
-sudo vi /etc/php/7.0/cli/php.ini
+sudo vi /etc/php/7.1/cli/php.ini
 ```
 Find the *phar.readonly* settings and set it to *Off*
 

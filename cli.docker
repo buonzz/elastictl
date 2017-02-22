@@ -1,5 +1,7 @@
 FROM buonzz/php-production-cli:latest
 
+RUN sed -ie 's/\;phar\.readonly = On/\phar\.readonly = Off/g' /etc/php/7.1/cli/php.ini
+
 RUN curl -LSs https://box-project.github.io/box2/installer.php | php
 RUN mv box.phar /usr/local/bin/box
 RUN chmod 755 /usr/local/bin/box
