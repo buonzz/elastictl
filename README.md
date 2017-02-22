@@ -16,6 +16,8 @@ Features
 
 ## Build Environment
 
+You'll only need to do the following if you would like to build your own version of this (please read the LICENSE file) or contibute to the project.
+
 Put up the server dependencies
 ```
 docker-compose up -d
@@ -26,29 +28,19 @@ ssh to the container
 docker-compose exec cli bash
 ```
 
-
-In order to build the phar file, you need to install the box command. To do so:
-```
-curl -LSs https://box-project.github.io/box2/installer.php | php
-```
-
-Make sure you turn off readonly setting of phar file in your php.ini. In PHP7:
+execute the build command
 
 ```
-sudo vi /etc/php/7.1/cli/php.ini
-```
-Find the *phar.readonly* settings and set it to *Off*
-
-
-Now move the box.phar file to /usr/local/bin so it can be globally available in console.
-
-```
-sudo mv box.phar /usr/local/bin/box
-sudo chmod 755 /usr/local/bin/box
+cd /code
+./build.sh
 ```
 
-You are now ready to build phar file!
+The compiled phar file should now be available in  /code/dist/elastictl.phar <br/>
+You can then upload it to your web server and let the users download/install it by:
 
 ```
-box --version
+wget http://downloads.yourdomain.com/elastictl.phar
+sudo mv elastictl.phar  /usr/local/bin/elastictl
+chmod +x /usr/local/bin/elastictl
+elastictl -V
 ```
