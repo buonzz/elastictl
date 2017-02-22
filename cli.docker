@@ -1,3 +1,8 @@
 FROM buonzz/php-production-cli:latest
+
+RUN curl -LSs https://box-project.github.io/box2/installer.php | php
+RUN mv box.phar /usr/local/bin/box
+RUN chmod 755 /usr/local/bin/box
+
 WORKDIR /code
-CMD ["composer", "install"]
+CMD ["tail", "-f", "/var/log/bootstrap.log"]

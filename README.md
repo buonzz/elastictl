@@ -10,6 +10,20 @@ Features
 * Perform Global Search
 
 
+
+## Usage
+
+Put up the server dependencies
+```
+docker-compose up -d
+```
+
+ssh to the container
+```
+docker-compose exec cli bash
+```
+
+
 ## Build Environment
 
 

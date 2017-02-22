@@ -9,8 +9,4 @@ services:
         links:
             - cache
     cache:
-        build:
-            context: ./
-            dockerfile: ./cache.docker
-        ports:
-            - "11211:11211"
+        image: "memcached:latest"
