@@ -16,7 +16,7 @@ Features
 
 ## Build Environment
 
-You'll only need to do the following if you would like to build your own version of this (please read the LICENSE file) or contibute to the project.
+You'll only need to do the following if you would like to build your own version of this (please read the LICENSE file) or contribute to the project.
 
 Put up the server dependencies
 ```
