@@ -25,7 +25,7 @@ class ListIndicesCommand extends Command
                 InputOption::VALUE_REQUIRED,
                 'Sort the indices by what field?',
                 "name"
-            );
+            )
             ->addOption(
                 'exclude_hidden',
                 null,
