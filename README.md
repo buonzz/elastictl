@@ -13,6 +13,16 @@ Features
 
 ## Usage
 
+Show information about the cluster
+
+```
+elastictl cluster:info
+```
+
+List all indices
+```
+elastictl indices:list
+```
 
 ## Build Environment
 
