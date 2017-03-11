@@ -24,6 +24,26 @@ List all indices
 elastictl indices:list
 ```
 
+Sort indices by size
+```
+bin/elastictl indices:list --sort_by=size
+```
+
+Sort indices by document count
+```
+bin/elastictl indices:list --sort_by=documents
+```
+
+Sort indices by document name
+```
+bin/elastictl indices:list --sort_by=name
+```
+
+Sort indices by health
+```
+bin/elastictl indices:list --sort_by=health
+```
+
 ## Build Environment
 
 You'll only need to do the following if you would like to build your own version of this (please read the LICENSE file) or contribute to the project.

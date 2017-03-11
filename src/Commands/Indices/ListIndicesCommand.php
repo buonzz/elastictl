@@ -26,12 +26,23 @@ class ListIndicesCommand extends Command
                 'Sort the indices by what field?',
                 "name"
             );
+            ->addOption(
+                'exclude_hidden',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Exclude indices that starts with period?',
+                true
+            );
     }
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $repo = new IndexRepository();
-        $indices = $repo->all(['sort_by' => $input->getOption('sort_by')]); 
+
+        $indices = $repo->all([
+                        'sort_by' => $input->getOption('sort_by')
+                        'exclude_hidden' => $input->getOption('exclude_hidden')
+                    ]); 
 
         $table = new Table($output);
         $table
