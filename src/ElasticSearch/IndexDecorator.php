@@ -27,7 +27,7 @@ class IndexDecorator{
 		else
 		{
 			$output['documents'] = $this->formatBytes($stats['indices'][$indexname]['total']['docs']['count']); 
-			$output['size'] = strpad(number_format($stats['indices'][$indexname]['total']['store']['size_in_bytes']),11,STR_PAD_LEFT);			
+			$output['size'] = str_pad(number_format($stats['indices'][$indexname]['total']['store']['size_in_bytes']),11,STR_PAD_LEFT);			
 		}
 
 		$this->output = $output;		
