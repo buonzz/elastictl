@@ -19,7 +19,7 @@ class IndexDecorator{
 		$output['name'] = $indexname;
 
 		$output['documents'] = number_format($stats['indices'][$indexname]['total']['docs']['count']); 
-		$output['size'] = number_format$stats['indices'][$indexname]['total']['store']['size_in_bytes']);
+		$output['size'] = number_format($stats['indices'][$indexname]['total']['store']['size_in_bytes']);
 
 		$output['health'] = $health['indices'][$indexname]['status'];
 
