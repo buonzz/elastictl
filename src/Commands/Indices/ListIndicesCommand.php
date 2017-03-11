@@ -40,7 +40,7 @@ class ListIndicesCommand extends Command
         $repo = new IndexRepository();
 
         $indices = $repo->all([
-                        'sort_by' => $input->getOption('sort_by')
+                        'sort_by' => $input->getOption('sort_by'),
                         'exclude_hidden' => $input->getOption('exclude_hidden')
                     ]); 
 
