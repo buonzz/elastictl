@@ -13,7 +13,7 @@ class IndexRepository{
 		$this->listing = new IndexListing();
 	}
 
-	public function all($params){
+	public function all($params = ['exclude_hidden' => true]){
 		$output = [];
 		
 		$col = $this->listing->get();
@@ -22,6 +22,14 @@ class IndexRepository{
 			$obj = new IndexDecorator($item);
 			return $obj->get();
 		});
+
+		// dont return items that starts with "." as this is usually used by Kibana/Marvel
+		if($params['exclude_hidden'])
+		{
+			$processed = $processed->reject(function($item){
+				return $item['name'][0] == '.';
+			});
+		}
 
 		if(isset($params['sort_by']))
 		{

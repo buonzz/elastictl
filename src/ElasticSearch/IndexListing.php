@@ -7,8 +7,9 @@ use Illuminate\Support\Collection;
 class IndexListing{
 
 	private $client;
-
+	
 	public function __construct(){
+
 		$this->client = new Client([
 		    'base_uri' => getenv("ES_PROTOCOL") . '://'. getenv("ES_HOST") . ":". getenv("ES_PORT"),
 		    'timeout'  => getenv("ES_TIMEOUT"),
