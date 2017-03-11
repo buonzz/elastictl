@@ -17,18 +17,11 @@ class IndexDecorator{
 		$health = $client->cluster()->health(['index' => $indexname, 'level' => 'shards']);
 
 		$output['name'] = $indexname;
-		$output['health'] = $health['indices'][$indexname]['status'];
 
-		if($format_result)
-		{
-			$output['documents'] = $stats['indices'][$indexname]['total']['docs']['count']; 
-			$output['size'] = $stats['indices'][$indexname]['total']['store']['size_in_bytes'];
-		}
-		else
-		{
-			$output['documents'] = $this->formatBytes($stats['indices'][$indexname]['total']['docs']['count']); 
-			$output['size'] = str_pad(number_format($stats['indices'][$indexname]['total']['store']['size_in_bytes']),11,STR_PAD_LEFT);			
-		}
+		$output['documents'] = number_format($stats['indices'][$indexname]['total']['docs']['count']); 
+		$output['size'] = number_format$stats['indices'][$indexname]['total']['store']['size_in_bytes']);
+
+		$output['health'] = $health['indices'][$indexname]['status'];
 
 		$this->output = $output;		
 	}
