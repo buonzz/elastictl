@@ -6,7 +6,3 @@ services:
             dockerfile: ./cli.docker
         volumes:
             - ./:/code
-        links:
-            - cache
-    cache:
-        image: "memcached:latest"
