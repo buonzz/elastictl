@@ -38,6 +38,12 @@ class ListIndicesCommand extends Command
                 InputOption::VALUE_REQUIRED,
                 'What kind of styling of the table output?',
                 'default'
+            )->addOption(
+                'namespace',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Filter it by namespace',
+                null
             );
     }
     
@@ -47,7 +53,8 @@ class ListIndicesCommand extends Command
 
         $indices = $repo->all([
                         'sort_by' => $input->getOption('sort_by'),
-                        'exclude_hidden' => $input->getOption('exclude_hidden')
+                        'exclude_hidden' => $input->getOption('exclude_hidden'),
+                        'namespace' => $input->getOption('namespace')
                     ]); 
 
         $table = new Table($output);

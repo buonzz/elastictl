@@ -38,11 +38,11 @@ class IndexRepository{
 		}
 
 		// if namespace is passed, filter it
-		if(isset($params['namespace']))
+		if(!is_null($params['namespace']))
 		{
 
 			$namespace_processor = new FilterByNamespaceProcessor();	
-			$processed = $namespace_processor->process($processed);
+			$processed = $namespace_processor->process($processed, $params['namespace']);
 
 		}
 
