@@ -24,7 +24,7 @@ class IndexRepository{
 		});
 
 		// dont return items that starts with "." as this is usually used by Kibana/Marvel
-		if($params['exclude_hidden'])
+		if($params['exclude_hidden'] == 'yes')
 		{
 			$processed = $processed->reject(function($item){
 				return $item['name'][0] == '.';

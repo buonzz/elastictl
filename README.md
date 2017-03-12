@@ -57,6 +57,11 @@ set the output table styling (valid values are compact, default, borderless)
 bin/elastictl indices:list --style=compact
 ```
 
+show hidden indices (indices that starts with period, often used by Kibana/Marvel for internal purposes)
+```
+bin/elastictl indices:list --exclude_hidden=no
+```
+
 ## Build Environment
 
 You'll only need to do the following if you would like to build your own version of this (please read the LICENSE file) or contribute to the project.

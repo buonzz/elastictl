@@ -31,7 +31,7 @@ class ListIndicesCommand extends Command
                 null,
                 InputOption::VALUE_REQUIRED,
                 'Exclude indices that starts with period?',
-                true
+                'yes'
             )->addOption(
                 'style',
                 null,
