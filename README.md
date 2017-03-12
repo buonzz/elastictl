@@ -3,12 +3,19 @@ Elastictl
 
 Command Line Client for Managing ElasticSearch Indices.
 
+
+## Requirements
+
+* PHP 5.4 or later
+* Memcached Server
+* ElasticSearch
+
+
 Features
 --------
 
 * Easily List all Indices
 * Perform Global Search
-
 
 
 ## Usage

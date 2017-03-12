@@ -31,11 +31,9 @@ class IndexDecorator{
 	}
 
 
-	function formatBytes($size, $precision = 2)
+	function formatBytes($size, $dec = 2)
 	{
-	    $base = log($size, 1024);
-	    $suffixes = array('', 'K', 'M', 'G', 'T');   
-
-	    return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
-	}
+        $size   = array(' B', ' kB', ' MB', ' GB', ' TB', ' PB', ' EB', ' ZB', ' YB');
+        $factor = floor((strlen($bytes) - 1) / 3);
+        return sprintf("%.{$dec}f", $bytes / pow(1024, $factor)) . @$size[$factor];	}
 }

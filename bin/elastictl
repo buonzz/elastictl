@@ -48,7 +48,8 @@ try{
 	putenv('USERNAME=null');
 	putenv('PASSWORD=null');
   putenv('TIMEOUT=3');
-  putenv('LOGFILE=/var/log/elastictl');
+  putenv('LOGFILE=/var/log/elastictl.log');
+  putenv('MEMCACHED_SERVER=127.0.0.1');
 }
 
 $defaultCommand = new ClusterInfoCommand();
