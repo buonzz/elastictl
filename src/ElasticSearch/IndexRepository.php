@@ -3,7 +3,9 @@ namespace Buonzz\Elastictl\ElasticSearch;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Collection;
-use Buonzz\Elastictl\ElasticSearch\IndexDecorator;
+
+use Buonzz\Elastictl\ElasticSearch\IndexProcessors\AddMetadataProcessor;
+use Buonzz\Elastictl\ElasticSearch\IndexProcessors\ExcludeHiddenProcessor;
 
 class IndexRepository{
 
@@ -21,17 +23,17 @@ class IndexRepository{
 		$col = $this->listing->get();
 
 		// add additional attributes
-		$processed = $col->map(function($item){
-			$obj = new IndexDecorator($item);
-			return $obj->get();
-		});
+		$metadata_processor = AddMetadataProcessor();	
+		$processed = $metadata_processor->process($col);
 
 		// dont return items that starts with "." as this is usually used by Kibana/Marvel
 		if($params['exclude_hidden'] == 'yes')
 		{
-			$processed = $processed->reject(function($item){
-				return $item['name'][0] == '.';
-			});
+
+			// add additional attributes
+			$excludehidden_processor = ExcludeHiddenProcessor();	
+			$processed = $excludehidden_processor->process($col);
+
 		}
 
 		// sort by what field
