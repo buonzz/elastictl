@@ -16,7 +16,7 @@ class IndexRepository{
 		$this->listing = new IndexListing();
 	}
 
-	public function all($params = ['exclude_hidden' => true]){
+	public function all($params = ['exclude_hidden' => 'yes']){
 
 		$output = [];
 		

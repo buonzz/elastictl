@@ -16,7 +16,7 @@ class FilterByNamespaceProcessor{
 			$to_match = substr($item['name'],0,$length);
 
 			if($to_match != $namespace)
-				return $item['name'][0] == '.';
+				return true;
 		});
 
 		return $processed;
