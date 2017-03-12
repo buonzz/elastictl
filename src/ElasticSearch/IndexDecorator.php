@@ -15,7 +15,7 @@ class IndexDecorator{
 		$output = [];
 		$this->cache = new Cache;
 
-		$key = md5(getenv("ES_PROTOCOL") . '://'. getenv("ES_HOST") . ":". getenv("ES_PORT") . "Buonzz\Elastictl\ElasticSearch\IndexDecorator");
+		$key = md5(getenv("ES_PROTOCOL") . '://'. getenv("ES_HOST") . ":". getenv("ES_PORT") . "Buonzz\Elastictl\ElasticSearch\IndexDecorator" . $indexname);
 
 		$value = $this->cache->get($key);
 
