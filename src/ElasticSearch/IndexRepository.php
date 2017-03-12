@@ -32,7 +32,7 @@ class IndexRepository{
 
 			// add additional attributes
 			$excludehidden_processor = new ExcludeHiddenProcessor();	
-			$processed = $excludehidden_processor->process($col);
+			$processed = $excludehidden_processor->process($processed);
 
 		}
 
