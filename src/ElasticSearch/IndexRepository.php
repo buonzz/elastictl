@@ -14,10 +14,13 @@ class IndexRepository{
 	}
 
 	public function all($params = ['exclude_hidden' => true]){
+
 		$output = [];
 		
+		// get the plain listing of index names
 		$col = $this->listing->get();
 
+		// add additional attributes
 		$processed = $col->map(function($item){
 			$obj = new IndexDecorator($item);
 			return $obj->get();
@@ -31,6 +34,7 @@ class IndexRepository{
 			});
 		}
 
+		// sort by what field
 		if(isset($params['sort_by']))
 		{
 			$processed = $processed->sortBy($params['sort_by']);
