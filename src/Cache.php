@@ -2,6 +2,8 @@
 
 namespace Buonzz\Elastictl;
 
+use \Memcached;
+
 class Cache{
 
 	private $m;
