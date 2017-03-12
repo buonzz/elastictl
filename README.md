@@ -62,6 +62,19 @@ show hidden indices (indices that starts with period, often used by Kibana/Marve
 bin/elastictl indices:list --exclude_hidden=no
 ```
 
+filter indices coming from a certain namespace
+```
+bin/elastictl indices:list --namespace=domain-logs
+```
+the above will only show indices on which the name starts with "domain-logs". So if you have multiple indices partitioned by date, all those will show up. For example:
+
+```
+domain-logs-2017.01
+domain-logs-2017.02
+domain-logs-2017.03
+domain-logs-2017.04
+```
+
 ## Build Environment
 
 You'll only need to do the following if you would like to build your own version of this (please read the LICENSE file) or contribute to the project.
