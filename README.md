@@ -51,6 +51,12 @@ Sort indices by health
 bin/elastictl indices:list --sort_by=health
 ```
 
+set the output table styling (valid values are compact, default, borderless)
+
+```
+bin/elastictl indices:list --style=compact
+```
+
 ## Build Environment
 
 You'll only need to do the following if you would like to build your own version of this (please read the LICENSE file) or contribute to the project.

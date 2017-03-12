@@ -10,7 +10,7 @@ class ClientFactory{
 
         $hosts = [getenv('ES_HOST')];       
         $logging = getenv('ES_LOGGING');
-        if($logging && is_writable(getenv('ES_LOGFILE')))
+        if($logging)
 		{ 
        		$logger = ClientBuilder::defaultLogger( getenv('ES_LOGFILE'), Logger::INFO);
         	$client = ClientBuilder::create()   // Instantiate a new ClientBuilder
