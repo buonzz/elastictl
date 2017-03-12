@@ -23,7 +23,7 @@ class IndexRepository{
 		$col = $this->listing->get();
 
 		// add additional attributes
-		$metadata_processor = AddMetadataProcessor();	
+		$metadata_processor = new AddMetadataProcessor();	
 		$processed = $metadata_processor->process($col);
 
 		// dont return items that starts with "." as this is usually used by Kibana/Marvel
@@ -31,7 +31,7 @@ class IndexRepository{
 		{
 
 			// add additional attributes
-			$excludehidden_processor = ExcludeHiddenProcessor();	
+			$excludehidden_processor = new ExcludeHiddenProcessor();	
 			$processed = $excludehidden_processor->process($col);
 
 		}
