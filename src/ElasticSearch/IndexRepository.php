@@ -6,6 +6,7 @@ use Illuminate\Support\Collection;
 
 use Buonzz\Elastictl\ElasticSearch\IndexProcessors\AddMetadataProcessor;
 use Buonzz\Elastictl\ElasticSearch\IndexProcessors\ExcludeHiddenProcessor;
+use Buonzz\Elastictl\ElasticSearch\IndexProcessors\FilterByNamespaceProcessor;
 
 class IndexRepository{
 
@@ -33,6 +34,15 @@ class IndexRepository{
 			// add additional attributes
 			$excludehidden_processor = new ExcludeHiddenProcessor();	
 			$processed = $excludehidden_processor->process($processed);
+
+		}
+
+		// if namespace is passed, filter it
+		if(isset($params['namespace']))
+		{
+
+			$namespace_processor = new FilterByNamespaceProcessor();	
+			$processed = $namespace_processor->process($processed);
 
 		}
 
