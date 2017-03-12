@@ -18,7 +18,7 @@ class Cache{
 	}
 
 	public function set($key, $value){
-		return $this->m->get($key, $value);
+		return $this->m->set($key, $value);
 	}
 
 	public function delete($key){
