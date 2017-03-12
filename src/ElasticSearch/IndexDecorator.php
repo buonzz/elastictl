@@ -2,19 +2,38 @@
 namespace Buonzz\Elastictl\ElasticSearch;
 
 use Buonzz\Elastictl\ElasticSearch\ClientFactory;
+use Buonzz\Elastictl\Cache;
 
 class IndexDecorator{
 
 	private $output;
 	public $format_result=true;
+	private $cache;
 	
 	public function __construct($indexname){
 
 		$output = [];
+		$this->cache = new Cache;
 
-		$client = ClientFactory::getClient(); 
-		$stats = $client->indices()->stats(['index' => $indexname]);
-		$health = $client->cluster()->health(['index' => $indexname, 'level' => 'shards']);
+		$key = md5(getenv("ES_PROTOCOL") . '://'. getenv("ES_HOST") . ":". getenv("ES_PORT") . "Buonzz\Elastictl\ElasticSearch\IndexDecorator");
+
+		$value = $this->cache->get($key);
+
+
+		if($value == false)
+		{
+			$client = ClientFactory::getClient(); 
+			$stats = $client->indices()->stats(['index' => $indexname]);
+			$health = $client->cluster()->health(['index' => $indexname, 'level' => 'shards']);
+
+			$this->cache->set($key, ['stats' => $stats, 'health' => $health]);
+		}
+		else{
+			$stats = $value['stats'];
+			$health = $value['health'];
+		}
+
+
 
 		$output['name'] = $indexname;
 
