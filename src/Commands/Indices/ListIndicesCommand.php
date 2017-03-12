@@ -32,6 +32,12 @@ class ListIndicesCommand extends Command
                 InputOption::VALUE_REQUIRED,
                 'Exclude indices that starts with period?',
                 true
+            )->addOption(
+                'style',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'What kind of styling of the table output?',
+                'default'
             );
     }
     
@@ -45,6 +51,7 @@ class ListIndicesCommand extends Command
                     ]); 
 
         $table = new Table($output);
+        $table->setStyle($input->getOption('style'));
         $table
             ->setHeaders(array('Name', 'Documents', 'Size', 'Health'))
             ->setRows($indices->toArray())
