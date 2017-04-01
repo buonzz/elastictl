@@ -28,3 +28,18 @@ sudo mv elastictl.phar  /usr/local/bin/elastictl
 chmod +x /usr/local/bin/elastictl
 elastictl -V
 ```
+
+
+## Elasticsearch
+
+the docker-compose file automatically creates a container for ElasticSearch, so you can test it with a local ES instance.
+
+- host: elasticsearch
+- username: elastic
+- password: changeme
+
+for example:
+
+```
+curl -u elastic:changeme elasticsearch:9200/_cat/indices?v
+```
