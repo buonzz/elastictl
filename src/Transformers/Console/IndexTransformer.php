@@ -9,8 +9,8 @@ class IndexTransformer extends Fractal\TransformerAbstract
 	{
 	    return [
 	        'name'  => $index['name'],
-	        'documents'   => $index['documents'],
-	        'size'    => $index['size'],
+	        'documents'   => $index['documents_friendly'],
+	        'size'    => $index['size_friendly'],
             'health'   => $index['health']
 	    ];
 	}

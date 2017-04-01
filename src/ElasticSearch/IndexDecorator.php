@@ -38,7 +38,10 @@ class IndexDecorator{
 		$output['name'] = $indexname;
 
 		$output['documents'] = $stats['indices'][$indexname]['total']['docs']['count']; 
+		$output['documents_friendly'] = number_format($stats['indices'][$indexname]['total']['docs']['count'],2); 
+
 		$output['size'] = $stats['indices'][$indexname]['total']['store']['size_in_bytes'];
+		$output['size_friendly'] = $this->formatBytes($stats['indices'][$indexname]['total']['store']['size_in_bytes']);
 
 		$output['health'] = $health['indices'][$indexname]['status'];
 
