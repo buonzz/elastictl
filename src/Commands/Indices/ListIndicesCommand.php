@@ -11,6 +11,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
 
 use \Buonzz\Elastictl\ElasticSearch\IndexRepository;
+use Buonzz\Elastictl\Transformers\Console\IndexTransformer;
+
+use League\Fractal\Manager;
+use League\Fractal\Resource\Collection;
 
 class ListIndicesCommand extends Command
 {
@@ -50,6 +54,7 @@ class ListIndicesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $repo = new IndexRepository();
+        $fractal = new Manager();
 
         $indices = $repo->all([
                         'sort_by' => $input->getOption('sort_by'),
@@ -57,11 +62,13 @@ class ListIndicesCommand extends Command
                         'namespace' => $input->getOption('namespace')
                     ]); 
 
+        $resource = new Fractal\Resource\Collection($indices, new IndexTransformer);
+        
         $table = new Table($output);
         $table->setStyle($input->getOption('style'));
         $table
             ->setHeaders(array('Name', 'Documents', 'Size', 'Health'))
-            ->setRows($indices->toArray())
+            ->setRows($fractal->createData($resource)->toArray())
         ;
         $table->render();
     }
