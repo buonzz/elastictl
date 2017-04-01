@@ -15,6 +15,7 @@ use Buonzz\Elastictl\Transformers\Console\IndexTransformer;
 
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
+use League\Fractal\Serializer\ArraySerializer;
 
 class ListIndicesCommand extends Command
 {
@@ -55,6 +56,7 @@ class ListIndicesCommand extends Command
     {
         $repo = new IndexRepository();
         $fractal = new Manager();
+        $fractal->setSerializer(new ArraySerializer());
 
         $indices = $repo->all([
                         'sort_by' => $input->getOption('sort_by'),
