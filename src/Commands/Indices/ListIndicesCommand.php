@@ -65,12 +65,13 @@ class ListIndicesCommand extends Command
                     ]); 
 
         $resource = new Collection($indices->toArray(), new IndexTransformer);
+        $transformed = $fractal->createData($resource)->toArray();
 
         $table = new Table($output);
         $table->setStyle($input->getOption('style'));
         $table
             ->setHeaders(array('Name', 'Documents', 'Size', 'Health'))
-            ->setRows($fractal->createData($resource)->toArray())
+            ->setRows($transformed['data'])
         ;
         $table->render();
     }
