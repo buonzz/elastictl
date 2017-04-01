@@ -64,7 +64,7 @@ class ListIndicesCommand extends Command
                         'namespace' => $input->getOption('namespace')
                     ]); 
 
-        $resource = new Collection($indices, new IndexTransformer);
+        $resource = new Collection($indices->toArray(), new IndexTransformer);
 
         $table = new Table($output);
         $table->setStyle($input->getOption('style'));
