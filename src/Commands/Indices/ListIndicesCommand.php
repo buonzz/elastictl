@@ -62,8 +62,8 @@ class ListIndicesCommand extends Command
                         'namespace' => $input->getOption('namespace')
                     ]); 
 
-        $resource = new Fractal\Resource\Collection($indices, new IndexTransformer);
-        
+        $resource = new Collection($indices, new IndexTransformer);
+
         $table = new Table($output);
         $table->setStyle($input->getOption('style'));
         $table
